@@ -11,26 +11,27 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private val btUsers by lazy { findViewById<Button>(R.id.btUsers) }
-    private lateinit var tvUsers: TextView
+    private val btGenres by lazy { findViewById<Button>(R.id.btGenres) }
+    private lateinit var tvGenre: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tvUsers = findViewById(R.id.tvUsers)
+        tvGenre = findViewById(R.id.tvGenre)
 
-        btUsers.setOnClickListener {
-            RetrofitInitializer().apiService().list().enqueue(object : Callback<List<User>> {
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+        btGenres.setOnClickListener {
+            RetrofitInitializer().apiService().listGenres("385801b00919de93e960028b6ca5e4cd", "en-US")
+                .enqueue(object : Callback<GenreList> {
+                override fun onResponse(call: Call<GenreList>, response: Response<GenreList>) {
                     response.body()?.let {
-                        for (user in it) {
-                            tvUsers.append("Nome: ${user.nome}\n")
+                        for (genre in it.genres) {
+                            tvGenre.append("Nome: ${genre.name}\n")
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<List<User>?>, t: Throwable) {
+                override fun onFailure(call: Call<GenreList>, t: Throwable) {
                     Log.e("TMDB", t.stackTrace.toString())
                 }
             })
