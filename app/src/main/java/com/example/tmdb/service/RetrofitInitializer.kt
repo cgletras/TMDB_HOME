@@ -1,4 +1,4 @@
-package com.example.tmdb
+package com.example.tmdb.service
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

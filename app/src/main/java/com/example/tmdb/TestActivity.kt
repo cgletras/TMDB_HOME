@@ -5,18 +5,20 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tmdb.data.GenreList
+import com.example.tmdb.service.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class TestActivity : AppCompatActivity() {
 
     private val btGenres by lazy { findViewById<Button>(R.id.btGenres) }
     private lateinit var tvGenre: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_test)
 
         tvGenre = findViewById(R.id.tvGenre)
 

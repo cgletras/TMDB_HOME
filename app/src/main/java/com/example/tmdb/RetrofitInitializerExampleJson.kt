@@ -1,5 +1,6 @@
 package com.example.tmdb
 
+import com.example.tmdb.service.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
