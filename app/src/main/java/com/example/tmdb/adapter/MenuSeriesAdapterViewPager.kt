@@ -4,13 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
 import com.example.tmdb.data.Serie
 
-class MenuSeriesAdapter(private val arrayOfseries: List<Serie>) : PagerAdapter() {
+class MenuSeriesAdapterViewPager(private val arrayOfseries: List<Serie>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any) =
         view === `object`
@@ -19,14 +18,14 @@ class MenuSeriesAdapter(private val arrayOfseries: List<Serie>) : PagerAdapter()
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(container.context)
-            .inflate(R.layout.vp_image_serie_item, container, false)
+            .inflate(R.layout.slider_image_serie_item, container, false)
 
-        val tvSerie = view.findViewById<ImageView>(R.id.vpMenuSeries)
+        val vpSerieImage = view.findViewById<ImageView>(R.id.imSliderImageSerie)
 
         //Glide
         Glide.with(container)
-            .load("http://image.tmdb.org/t/p/w185/" + arrayOfseries[position].poster)
-            .into(tvSerie)
+            .load("http://image.tmdb.org/t/p/original/" + arrayOfseries[position].poster)
+            .into(vpSerieImage)
 
         container.addView(view)
         return view

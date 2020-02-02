@@ -20,5 +20,4 @@ class RetrofitInitializer {
 
     fun apiService() = retrofit.create(ApiService::class.java)
 
-
 }

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.tmdb.R
 import com.example.tmdb.data.Movie
 
-class MenuAdapter(private val arrayOfMovies: List<Movie>) : PagerAdapter() {
+class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any) =
         view === `object`
