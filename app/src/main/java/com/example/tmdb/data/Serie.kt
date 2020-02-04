@@ -11,8 +11,12 @@ data class Serie (
 
     @SerializedName("id")
     val id: Int,
-    @SerializedName("title")
+    @SerializedName("name")
     val title: String,
     @SerializedName("poster_path")
-    val poster: String?
+    val poster: String?,
+    @SerializedName("overview")
+    val details: String,
+    @SerializedName("backdrop_path")
+    val posterWide: String
 )

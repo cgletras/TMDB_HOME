@@ -2,8 +2,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/nestedScrollMenu"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MenuFragment">
 
@@ -30,6 +30,7 @@
             android:layout_marginTop="12dp"
             android:animateLayoutChanges="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleMenu" />
 
@@ -72,35 +73,49 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@id/tvGeneroTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvMenuSeries"
-            app:layout_constraintBottom_toTopOf="@id/tvGeneroTitle"/>
+            app:layout_constraintTop_toBottomOf="@id/rvMenuSeries" />
 
         <TextView
             android:id="@+id/tvGeneroTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
             android:text="@string/generos"
             android:textAlignment="center"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider2" />
 
-
         <Spinner
             android:id="@+id/spGeneros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="17dp"
             android:fadingEdge="vertical"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-          app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvGeneroTitle"
+            app:layout_constraintTop_toBottomOf="@id/divider2"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
+        <ImageView
+            android:id="@+id/ivGenreImage"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/cinema"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGeneroTitle" />
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMenuSeriesGrid"
@@ -109,20 +124,17 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:orientation="vertical"
-            app:spanCount="3"
             android:nestedScrollingEnabled="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_behavior = "@string/appbar_scrolling_view_behavior"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spGeneros"
+            app:layout_constraintTop_toBottomOf="@id/ivGenreImage"
+            app:spanCount="3"
             tools:itemCount="5"
             tools:listitem="@layout/cd_serie_item_recycler" />
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

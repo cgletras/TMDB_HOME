@@ -13,7 +13,8 @@
     <string name="imagem_da_serie">Imagem da serie</string>
     <string name="titulo_serie">Titulo serie</string>
     <string name="digite_o_nome_do_filme">Digite o nome do filme!</string>
-    <string name="generos">Generos</string>
+    <string name="generos">Generos:</string>
+    <string name="tituloMovieDetais">Titulo Movie Details</string>
     <string-array name="genres_array">
         <item>Clique e selecione um gênero</item>
         <item>Terror</item>

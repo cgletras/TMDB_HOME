@@ -1,12 +1,19 @@
 package com.example.tmdb.adapter
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
+import com.example.tmdb.activity.MovieDetails
 import com.example.tmdb.data.Serie
 
 class MenuSeriesAdapterRecyclerView: RecyclerView.Adapter<MenuSerieViewholder>(){
@@ -32,7 +39,6 @@ class MenuSeriesAdapterRecyclerView: RecyclerView.Adapter<MenuSerieViewholder>()
         notifyDataSetChanged()
     }
 
-
 }
 
 class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -42,5 +48,24 @@ class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
         Glide.with(itemView.context)
             .load("http://image.tmdb.org/t/p/original/" + serie.poster)
             .into(imageSerie)
+
+        itemView.setOnClickListener {
+            val intent = Intent(itemView.context , MovieDetails::class.java)
+
+            //Animation
+            val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity, imageSerie, "posterSerie")
+
+            //Dados
+            val dados = Bundle()
+            dados.putString("title", serie.title)
+            dados.putString("poster", serie.poster)
+            dados.putString("details", serie.details)
+            dados.putString("posterWide",serie.posterWide)
+
+            intent.putExtras(dados)
+
+            itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
+
+        }
     }
 }

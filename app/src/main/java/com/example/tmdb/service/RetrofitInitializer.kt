@@ -18,6 +18,15 @@ class RetrofitInitializer {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    private val retrofitPixaBay =
+        Retrofit.Builder()
+            .client(okHttp)
+            .baseUrl("https://pixabay.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
     fun apiService() = retrofit.create(ApiService::class.java)
+
+    fun apiServicePixaBay() = retrofitPixaBay.create(ApiServicePixaBay::class.java)
 
 }

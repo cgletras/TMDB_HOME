@@ -43,13 +43,16 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val imageSerie = itemView.findViewById<ImageView>(R.id.imvSearchFilm)
         Glide.with(itemView.context)
-            .load("http://image.tmdb.org/t/p/original/" + movie.poster)
+            .load("http://image.tmdb.org/t/p/original/" + movie.posterBack)
             .into(imageSerie)
 
         val titleSearch = itemView.findViewById<TextView>(R.id.tvMovieSearchTitle)
         titleSearch.text = movie.title
 
         val releaseDate = itemView.findViewById<TextView>(R.id.tvMovieSearchDate)
-        releaseDate.text = movie.releaseDate.substring(0, 4)
+        movie.releaseDate?.let {
+            releaseDate.text = it.substring(0, 4)
+        }
+
     }
 }
