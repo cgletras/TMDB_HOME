@@ -1,6 +1,5 @@
 package com.example.tmdb.service
 
-import com.example.tmdb.data.GenreList
 import com.example.tmdb.data.GenreListImage
 import retrofit2.Call
 import retrofit2.http.GET

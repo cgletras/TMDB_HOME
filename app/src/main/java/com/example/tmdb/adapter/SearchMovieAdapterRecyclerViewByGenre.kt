@@ -65,6 +65,8 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
             intent.putExtras(dados)
 
+
+
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
 
         }
