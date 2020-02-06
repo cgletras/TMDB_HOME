@@ -28,5 +28,13 @@ interface ApiService {
                                @Query("query") query: String,
                                @Query("page") page: Int): Call<MovieList>
 
+    @GET("discover/movie")
+    fun listMoviesByGenre(@Query("api_key") apiKey: String,
+                          @Query("language") lang: String,
+                          @Query("sort_by")sortBy:String,
+                          @Query("include_adult")includeAdult:String,
+                          @Query("include_video")includeVideo:String,
+                          @Query("with_genres") genreId:Int,
+                          @Query("page") page:Int):Call<MovieList>
 
 }

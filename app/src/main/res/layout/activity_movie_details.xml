@@ -39,7 +39,8 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imvMovieDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/imvMovieDetails"
+        android:transitionName="title"/>
 
     <TextView
         android:id="@+id/tvMovieDetails"

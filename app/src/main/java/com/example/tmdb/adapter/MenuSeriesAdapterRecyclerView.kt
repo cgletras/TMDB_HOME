@@ -2,13 +2,11 @@ package com.example.tmdb.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -53,7 +51,10 @@ class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
             val intent = Intent(itemView.context , MovieDetails::class.java)
 
             //Animation
-            val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity, imageSerie, "posterSerie")
+            val activityOptionsCompat =
+                ActivityOptionsCompat
+                    .makeSceneTransitionAnimation(itemView.context as Activity,
+                        imageSerie, "posterSerie")
 
             //Dados
             val dados = Bundle()
