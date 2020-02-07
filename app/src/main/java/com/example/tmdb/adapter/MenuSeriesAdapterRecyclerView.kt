@@ -45,6 +45,7 @@ class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageSerie = itemView.findViewById<ImageView>(R.id.imvSeriePosterPath)
         Glide.with(itemView.context)
             .load("http://image.tmdb.org/t/p/original/" + serie.poster)
+            .thumbnail()
             .into(imageSerie)
 
         itemView.setOnClickListener {

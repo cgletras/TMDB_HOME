@@ -32,6 +32,7 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
         //Glide
         Glide.with(container)
             .load("http://image.tmdb.org/t/p/original/" + arrayOfMovies[position].posterBack)
+            .thumbnail()
             .into(tvImage)
 
        tvTile.text = arrayOfMovies[position].title

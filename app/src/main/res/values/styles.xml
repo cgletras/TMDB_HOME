@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/aldrich</item>
         <item name="android:windowContentTransitions">true</item>
+
     </style>
 
 </resources>

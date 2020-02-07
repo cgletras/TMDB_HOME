@@ -45,6 +45,7 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
         val imageMovie = itemView.findViewById<ImageView>(R.id.imvSeriePosterPath)
         Glide.with(itemView.context)
             .load("http://image.tmdb.org/t/p/original/" + movie.poster)
+            .thumbnail()
             .into(imageMovie)
 
         itemView.setOnClickListener {
@@ -64,9 +65,6 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
             dados.putString("posterWide",movie.posterBack)
 
             intent.putExtras(dados)
-
-
-
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
 
         }
