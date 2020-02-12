@@ -4,7 +4,7 @@
     <string name="genres">TMDB Filmes</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Favoritos</string>
     <string name="title_main_menu">Filmes em destaque</string>
     <string name="search_page_title">Procure filmes!</string>
     <string name="simbolo_de_lupa_para_busca">simbolo de lupa para busca</string>

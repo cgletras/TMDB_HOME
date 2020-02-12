@@ -1,6 +1,8 @@
 package com.example.tmdb.data
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -11,7 +13,12 @@ data class MovieList(
 ): Parcelable
 
 @Parcelize
+@Entity(tableName = "movie_table")
 data class Movie (
+
+    @SerializedName("id_table")
+    @PrimaryKey(autoGenerate = true)
+    var idTable: Int = 0,
 
     @SerializedName("id")
     val id: Int,

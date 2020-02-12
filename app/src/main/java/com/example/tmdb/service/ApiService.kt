@@ -6,6 +6,7 @@ import com.example.tmdb.data.MovieList
 import com.example.tmdb.data.SerieList
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -36,5 +37,10 @@ interface ApiService {
                           @Query("include_video")includeVideo:String,
                           @Query("with_genres") genreId:Int,
                           @Query("page") page:Int):Call<MovieList>
+
+    @GET("movie/{tv_id}")
+    fun getMovieForFavorite(@Query("api_key") apiKey: String,
+                            @Query("language") lang: String,
+                            @Path("tv_id") tvId: Int)
 
 }
