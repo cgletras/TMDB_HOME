@@ -1,23 +1,20 @@
 package com.example.tmdb.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.tmdb.data.Movie
 
 @Dao
 interface MovieDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie:Movie)
 
     @Query("DELETE FROM movie_table")
     fun deleteAll()
 
-    @Query("SELECT * FROM movie_table ORDER BY idTable ASC")
-    fun getAllWorlds():List<Movie>
+    @Query("SELECT * FROM movie_table ORDER BY instant DESC")
+    fun getAllMovies():List<Movie>
 
     @Delete
-    fun deleteWord(movie:Movie)
+    fun deleteMovie(movie:Movie)
 }

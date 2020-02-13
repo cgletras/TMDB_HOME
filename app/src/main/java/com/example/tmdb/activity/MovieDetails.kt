@@ -37,6 +37,7 @@ class MovieDetails : AppCompatActivity() {
                 iconView.setImageResource(R.drawable.ic_favorite_green_24dp)
                 favorite = true
 
+
             } else{
                 iconView.setImageResource(R.drawable.ic_favorite_border_green_24dp)
                 favorite = false

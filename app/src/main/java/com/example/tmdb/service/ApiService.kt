@@ -2,6 +2,7 @@ package com.example.tmdb.service
 
 import com.example.tmdb.User
 import com.example.tmdb.data.GenreList
+import com.example.tmdb.data.Movie
 import com.example.tmdb.data.MovieList
 import com.example.tmdb.data.SerieList
 import retrofit2.Call
@@ -38,9 +39,9 @@ interface ApiService {
                           @Query("with_genres") genreId:Int,
                           @Query("page") page:Int):Call<MovieList>
 
-    @GET("movie/{tv_id}")
-    fun getMovieForFavorite(@Query("api_key") apiKey: String,
-                            @Query("language") lang: String,
-                            @Path("tv_id") tvId: Int)
+    @GET("movie/{id}")
+    fun getMovieById(@Path("id") movieId: Int,
+                     @Query("api_key") apiKey: String,
+                     @Query("language") lang: String):Call<Movie>
 
 }

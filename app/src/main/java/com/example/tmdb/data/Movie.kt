@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import java.time.Instant
 
 @Parcelize
 data class MovieList(
@@ -16,10 +17,7 @@ data class MovieList(
 @Entity(tableName = "movie_table")
 data class Movie (
 
-    @SerializedName("id_table")
-    @PrimaryKey(autoGenerate = true)
-    var idTable: Int = 0,
-
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("title")
@@ -31,6 +29,13 @@ data class Movie (
     @SerializedName("overview")
     val details: String,
     @SerializedName("poster_path")
-    val poster: String
+    val poster: String,
+    @SerializedName("instant")
+    var instant:String
 
 ): Parcelable
+
+enum class MediaType {
+    MOVIE,
+    SERIE
+}

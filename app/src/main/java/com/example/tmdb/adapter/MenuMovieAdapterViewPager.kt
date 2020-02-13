@@ -49,11 +49,11 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
             dados.putString("poster", arrayOfMovies[position].poster)
             dados.putString("details", arrayOfMovies[position].details)
             dados.putString("posterWide",arrayOfMovies[position].posterBack)
+            dados.putString("id", arrayOfMovies[position].id.toString())
 
             intent.putExtras(dados)
 
             container.context.startActivity(intent, activityOptionsCompat.toBundle())
-
         }
 
         container.addView(view)

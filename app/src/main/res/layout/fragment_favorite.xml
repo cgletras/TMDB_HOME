@@ -8,47 +8,72 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tvTitleFavorite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textAlignment="center"
-        android:layout_margin="18dp"
-        android:textSize="24sp"
-        android:text="@string/hello_blank_fragment" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFavoriteRecycler"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/testeLista"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleFavorite"
-        tools:itemCount="5"
-        tools:listitem="@layout/item_search_recycler" />
+        app:layout_constraintStart_toEndOf="@+id/button">
+
+        <TextView
+            android:id="@+id/tvTitleFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="18dp"
+            android:text="@string/hello_blank_fragment"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFavoriteRecycler"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/testeLista"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleFavorite"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_search_recycler" />
 
         <EditText
             android:id="@+id/testeLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/rvFavoriteRecycler"
+            android:text="LISTAFILMES"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="LISTAFILMES"/>
+            app:layout_constraintTop_toBottomOf="@id/rvFavoriteRecycler" />
+
         <Button
             android:id="@+id/btSalvar"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginLeft="18dp"
             android:text="Salvar"
+            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/testeLista" />
+            app:layout_constraintTop_toBottomOf="@id/testeLista"
+             />
+
+        <Button
+            android:id="@+id/btRemover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Remover"
+            app:layout_constraintStart_toEndOf="@id/btSalvar"
+            app:layout_constraintTop_toBottomOf="@id/testeLista"
+             />
+
+        <Button
+            android:id="@+id/btRemoveTudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove TUDO"
+            app:layout_constraintStart_toEndOf="@id/btRemover"
+            app:layout_constraintTop_toBottomOf="@id/testeLista"
+            />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

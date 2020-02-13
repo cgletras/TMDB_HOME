@@ -1,4 +1,4 @@
-package com.example.tmdb.service
+package com.example.tmdb
 
 import android.app.Application
 import androidx.room.Room
@@ -8,7 +8,7 @@ import com.example.tmdb.dataBase.MediaDataBase
 class RoomTMDBApplication : Application() {
 
     companion object {
-        lateinit var dataBase: MovieDao
+        lateinit var movieDao: MovieDao
     }
 
     override fun onCreate() {
@@ -19,6 +19,6 @@ class RoomTMDBApplication : Application() {
             "media_database"
         ).allowMainThreadQueries().build()
 
-        dataBase = room.movieDao()
+        movieDao = room.movieDao()
     }
 }
