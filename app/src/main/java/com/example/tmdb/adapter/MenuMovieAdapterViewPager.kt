@@ -44,12 +44,16 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
 
             val activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(container.context as Activity, tvImage, "posterBack")
 
+            val instantLong = System.currentTimeMillis() / 1000
+            arrayOfMovies[position].instant = instantLong.toString()
+
             val dados = Bundle()
             dados.putString("title", arrayOfMovies[position].title)
             dados.putString("poster", arrayOfMovies[position].poster)
             dados.putString("details", arrayOfMovies[position].details)
             dados.putString("posterWide",arrayOfMovies[position].posterBack)
             dados.putString("id", arrayOfMovies[position].id.toString())
+            dados.putParcelable("moviesDetails", arrayOfMovies[position])
 
             intent.putExtras(dados)
 

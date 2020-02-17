@@ -17,7 +17,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -51,9 +50,7 @@ class FavoriteFragment : Fragment() {
         var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
         adapter.setList(movies)
 
-
         btRemover.setOnClickListener {
-            var id = 330457
 
             var movies1 = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
 
@@ -61,15 +58,10 @@ class FavoriteFragment : Fragment() {
 
             var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
             adapter.setList(movies)
-
         }
 
         btSalvar.setOnClickListener {
-            val idMovie = testeLista.text.toString()
-            Toast.makeText(context, idMovie, Toast.LENGTH_SHORT).show()
 
-            //var id = 495764 // Birds
-            //var id = 419704 // Ad astra
             var id = 330457 // Frozen
 
             RetrofitInitializer().apiService().getMovieById(id,"385801b00919de93e960028b6ca5e4cd", "en-US")
@@ -91,7 +83,6 @@ class FavoriteFragment : Fragment() {
                             var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
                             adapter.setList(movies)
 
-                            Toast.makeText(context, it.instant, Toast.LENGTH_SHORT).show()
                         }
                     }
                 })
@@ -100,6 +91,12 @@ class FavoriteFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+        adapter.setList(movies)
+    }
+    
     companion object {
         fun newInstance(param1: String, param2: String) =
             FavoriteFragment().apply {

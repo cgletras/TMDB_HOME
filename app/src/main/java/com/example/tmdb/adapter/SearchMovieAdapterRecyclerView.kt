@@ -76,6 +76,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             dados.putString("poster", movie.poster)
             dados.putString("details", movie.details)
             dados.putString("posterWide",movie.posterBack)
+            dados.putParcelable("moviesDetails", movie)
 
             intent.putExtras(dados)
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
