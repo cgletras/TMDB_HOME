@@ -74,6 +74,7 @@ class FavoriteFragment : Fragment() {
         //------------------------
 
         btRemoveTudo.setOnClickListener {
+            RoomTMDBApplication.movieDao.deleteAll()
             var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
             adapter.setList(movies)
         }
@@ -83,47 +84,6 @@ class FavoriteFragment : Fragment() {
 
         var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
         adapter.setList(movies)
-
-        btRemover.setOnClickListener {
-
-            var movies1 = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
-
-            RoomTMDBApplication.movieDao.deleteMovie(movies1[0])
-
-            var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
-            adapter.setList(movies)
-        }
-
-        btSalvar.setOnClickListener {
-
-            var id = 330457 // Frozen
-
-            RetrofitInitializer().apiService()
-                .getMovieById(id, "385801b00919de93e960028b6ca5e4cd", "en-US")
-                .enqueue(object : Callback<Movie> {
-                    override fun onFailure(call: Call<Movie>, t: Throwable) {
-                        Log.e("TMDB", t.stackTrace.toString())
-                    }
-
-                    override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-
-                        response.body()?.let {
-                            Log.i("MOVIE ->", it.toString())
-
-                            val instantLong = System.currentTimeMillis() / 1000
-                            it.instant = instantLong.toString()
-
-                            RoomTMDBApplication.movieDao.insert(it)
-
-                            var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
-                            adapter.setList(movies)
-
-                        }
-                    }
-                })
-
-
-        }
     }
 
     override fun onResume() {

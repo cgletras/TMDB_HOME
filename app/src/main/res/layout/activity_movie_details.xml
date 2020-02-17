@@ -10,24 +10,20 @@
         android:id="@+id/imvMovieDetailsBackPoster"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:alpha="0.40"
         android:transitionName="posterBack"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imvMovieDetails"
         android:layout_width="0dp"
         android:layout_height="275dp"
+        android:transitionName="posterSerie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:transitionName="posterSerie"
-        />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvMovieTitleDetails"
@@ -37,65 +33,65 @@
         android:text="@string/tituloMovieDetais"
         android:textAlignment="center"
         android:textSize="30sp"
+        android:transitionName="title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imvMovieDetails"
-        android:transitionName="title"/>
+        app:layout_constraintTop_toBottomOf="@+id/imvMovieDetails" />
 
-    <TextView
-        android:id="@+id/tvMovieDetails"
+    <ScrollView
+        android:id="@+id/svMediaDetails"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:justificationMode="inter_word"
-        android:lineSpacingExtra="7sp"
-        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
-        android:textSize="18sp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMovieTitleDetails" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMovieTitleDetails">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="395dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
+            <TextView
+                android:id="@+id/tvMovieDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:padding="16dp"
+                android:lineSpacingExtra="7sp"
+                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
+                android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/imvIconAdd"
-        android:layout_width="@dimen/iconSizeFavorite"
-        android:layout_height="@dimen/iconSizeFavorite"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/tvMovieDetails"
-        app:srcCompat="@drawable/ic_add_circle_green_24dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal"
+                android:weightSum="6">
 
-    <ImageView
-        android:id="@+id/imvIconFavorite"
-        android:layout_width="@dimen/iconSizeFavorite"
-        android:layout_height="@dimen/iconSizeFavorite"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/imvIconShare"
-        app:layout_constraintStart_toEndOf="@+id/imvIconAdd"
-        app:layout_constraintTop_toBottomOf="@+id/tvMovieDetails"
-        app:srcCompat="@drawable/ic_favorite_border_green_24dp" />
+                <ImageView
+                    android:id="@+id/imvIconAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/iconSizeFavorite"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_add_circle_green_24dp" />
 
-    <ImageView
-        android:id="@+id/imvIconShare"
-        android:layout_width="@dimen/iconSizeFavorite"
-        android:layout_height="@dimen/iconSizeFavorite"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/tvMovieDetails"
-        app:srcCompat="@drawable/ic_share_green_24dp" />
+                <ImageView
+                    android:id="@+id/imvIconFavorite"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/iconSizeFavorite"
+                    android:layout_weight="4"
+                    app:srcCompat="@drawable/ic_favorite_border_green_24dp" />
+
+                <ImageView
+                    android:id="@+id/imvIconShare"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/iconSizeFavorite"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_share_green_24dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

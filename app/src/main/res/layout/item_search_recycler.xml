@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
 
-
     <ImageView
         android:id="@+id/imvSearchFilm"
         android:layout_width="190dp"
@@ -19,13 +18,14 @@
 
     <TextView
         android:id="@+id/tvMovieSearchTitle"
-        android:layout_width="0dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="@string/titulo_da_busca"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/imvSearchFilm"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/tvMovieSearchDate"

@@ -3,6 +3,7 @@ package com.example.tmdb.adapter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import com.example.tmdb.activity.MovieDetails
 import com.example.tmdb.data.Movie
 
 class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerAdapter() {
+
+    var clickTime = 0L
 
     override fun isViewFromObject(view: View, `object`: Any) =
         view === `object`
@@ -38,7 +41,14 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
        tvTile.text = arrayOfMovies[position].title
 
         view.setOnClickListener {
-           val intent = Intent(container.context, MovieDetails::class.java)
+
+            //Multi click handlers
+            if (SystemClock.elapsedRealtime() - clickTime < 1000){
+                return@setOnClickListener
+            }
+            clickTime = SystemClock.elapsedRealtime()
+
+            val intent = Intent(container.context, MovieDetails::class.java)
 
             //Animation
 

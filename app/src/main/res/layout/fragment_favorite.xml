@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button">
+        app:layout_constraintStart_toEndOf="parent">
 
         <TextView
             android:id="@+id/tvTitleFavorite"
@@ -37,43 +37,25 @@
             tools:itemCount="5"
             tools:listitem="@layout/item_search_recycler" />
 
-        <EditText
+        <TextView
             android:id="@+id/testeLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LISTAFILMES"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:text="LISTA FILMES"
+            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rvFavoriteRecycler" />
 
         <Button
-            android:id="@+id/btSalvar"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="Salvar"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/testeLista"
-             />
-
-        <Button
-            android:id="@+id/btRemover"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="Remover"
-            app:layout_constraintStart_toEndOf="@id/btSalvar"
-            app:layout_constraintTop_toBottomOf="@id/testeLista"
-             />
-
-        <Button
             android:id="@+id/btRemoveTudo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Remove TUDO"
-            app:layout_constraintStart_toEndOf="@id/btRemover"
+            android:text="Remover TUDO"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/testeLista"
             />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
