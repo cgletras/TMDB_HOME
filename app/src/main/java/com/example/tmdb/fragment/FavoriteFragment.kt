@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Database
 import com.example.tmdb.R
 import com.example.tmdb.RoomTMDBApplication
 import com.example.tmdb.adapter.SearchMovieAdapter
@@ -39,6 +42,37 @@ class FavoriteFragment : Fragment() {
 
         loadFavoriteDataBase()
 
+        //Swipe to delete - Item A and B
+        //Item A
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, position: Int) {
+                //Remove from adapter list
+                adapter.removeItem(viewHolder)
+
+                //Remove from Room dataBase
+                Log.i("POSITION ITEM LAYOUT", viewHolder.layoutPosition.toString())
+                var moviesDel = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+                Log.i("POSITION ITEM LIST", moviesDel[viewHolder.layoutPosition].toString())
+                RoomTMDBApplication.movieDao.deleteMovie(moviesDel[viewHolder.layoutPosition])
+            }
+        }
+        //Item B
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(rvFavoriteRecycler)
+
+        //------------------------
+
         btRemoveTudo.setOnClickListener {
             var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
             adapter.setList(movies)
@@ -54,7 +88,7 @@ class FavoriteFragment : Fragment() {
 
             var movies1 = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
 
-                RoomTMDBApplication.movieDao.deleteMovie(movies1[0])
+            RoomTMDBApplication.movieDao.deleteMovie(movies1[0])
 
             var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
             adapter.setList(movies)
@@ -64,8 +98,9 @@ class FavoriteFragment : Fragment() {
 
             var id = 330457 // Frozen
 
-            RetrofitInitializer().apiService().getMovieById(id,"385801b00919de93e960028b6ca5e4cd", "en-US")
-                .enqueue(object : Callback<Movie>{
+            RetrofitInitializer().apiService()
+                .getMovieById(id, "385801b00919de93e960028b6ca5e4cd", "en-US")
+                .enqueue(object : Callback<Movie> {
                     override fun onFailure(call: Call<Movie>, t: Throwable) {
                         Log.e("TMDB", t.stackTrace.toString())
                     }
@@ -96,7 +131,7 @@ class FavoriteFragment : Fragment() {
         var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
         adapter.setList(movies)
     }
-    
+
     companion object {
         fun newInstance(param1: String, param2: String) =
             FavoriteFragment().apply {

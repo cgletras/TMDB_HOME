@@ -3,6 +3,7 @@ package com.example.tmdb.adapter
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,10 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
+import com.example.tmdb.RoomTMDBApplication
 import com.example.tmdb.activity.MovieDetails
 import com.example.tmdb.data.Movie
+import kotlin.coroutines.coroutineContext
 
 class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
 
@@ -40,6 +43,11 @@ class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
         arrayOfMovies.clear()
         arrayOfMovies.addAll(movies)
         notifyDataSetChanged()
+    }
+
+    fun removeItem(holder: RecyclerView.ViewHolder) {
+        arrayOfMovies.removeAt(holder.adapterPosition)
+        notifyItemRemoved(holder.adapterPosition)
     }
 }
 

@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
 import com.example.tmdb.RoomTMDBApplication
 import com.example.tmdb.adapter.SearchMovieAdapter
 import com.example.tmdb.data.Movie
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import java.text.FieldPosition
 
 class MovieDetails : AppCompatActivity() {
 
@@ -40,8 +43,8 @@ class MovieDetails : AppCompatActivity() {
         //checkIfFavorite
         var FavoriteMovies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
 
-        for(favoriteMovie in FavoriteMovies)
-            if(favoriteMovie.id == movieDetails?.id){
+        for (favoriteMovie in FavoriteMovies)
+            if (favoriteMovie.id == movieDetails?.id) {
                 iconView.setImageResource(R.drawable.ic_favorite_green_24dp)
                 favorite = true
             }
@@ -56,17 +59,26 @@ class MovieDetails : AppCompatActivity() {
                 movieDetails?.instant = instantLong.toString()
 
                 movieDetails?.let { it1 -> RoomTMDBApplication.movieDao.insert(it1) }
-                Toast.makeText(applicationContext,"Filme adicionado aos favoritos",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Filme adicionado aos favoritos",
+                    Toast.LENGTH_SHORT
+                ).show()
 
             } else {
                 iconView.setImageResource(R.drawable.ic_favorite_border_green_24dp)
                 favorite = false
 
                 movieDetails?.let { it1 -> RoomTMDBApplication.movieDao.deleteMovie(it1) }
-                Toast.makeText(applicationContext,"Filme removido dos favoritos",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Filme removido dos favoritos",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }
+
 
     }
 }
