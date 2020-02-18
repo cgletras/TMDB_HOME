@@ -16,6 +16,7 @@ data class SerieList(
 @Entity(tableName = "serie_table")
 data class Serie (
 
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -25,8 +26,8 @@ data class Serie (
     @SerializedName("overview")
     val details: String,
     @SerializedName("backdrop_path")
-    val posterWide: String
-): Parcelable{
-    @SerializedName("id_table")
-    @PrimaryKey(autoGenerate = true) var idTable: Int = 0
-}
+    val posterWide: String,
+    @SerializedName("instant")
+    var instant:String?
+
+): Parcelable

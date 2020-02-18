@@ -17,11 +17,15 @@ import com.example.tmdb.R
 import com.example.tmdb.RoomTMDBApplication
 import com.example.tmdb.activity.MovieDetails
 import com.example.tmdb.data.Movie
+import com.google.android.material.snackbar.Snackbar
 import kotlin.coroutines.coroutineContext
 
 class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     private val arrayOfMovies = ArrayList<Movie>()
+
+    private var removedPosition:Int = 0
+    private lateinit var removedItem:Movie
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -46,8 +50,19 @@ class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     fun removeItem(holder: RecyclerView.ViewHolder) {
+        removedPosition = holder.adapterPosition
+        removedItem = arrayOfMovies[holder.adapterPosition]
+
         arrayOfMovies.removeAt(holder.adapterPosition)
         notifyItemRemoved(holder.adapterPosition)
+
+        Snackbar.make(holder.itemView, "Deletado", Snackbar.LENGTH_LONG)
+            .setAction("DESFAZER"){
+                arrayOfMovies.add(removedPosition, removedItem)
+                notifyItemInserted(removedPosition)
+                RoomTMDBApplication.movieDao.insert(removedItem)
+            }.show()
+
     }
 }
 
@@ -80,6 +95,8 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
             //Dados
             val dados = Bundle()
+            movie.instant = ""
+            dados.putString("instant", movie.instant)
             dados.putString("title", movie.title)
             dados.putString("poster", movie.poster)
             dados.putString("details", movie.details)

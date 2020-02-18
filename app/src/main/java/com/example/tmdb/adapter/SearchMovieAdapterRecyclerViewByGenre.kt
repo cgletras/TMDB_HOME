@@ -59,14 +59,16 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
             //Dados
             val dados = Bundle()
+            movie.instant = ""
+            dados.putString("instant", movie.instant)
             dados.putString("title", movie.title)
             dados.putString("poster", movie.poster)
             dados.putString("details", movie.details)
             dados.putString("posterWide",movie.posterBack)
+            dados.putParcelable("moviesDetails", movie)
 
             intent.putExtras(dados)
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
-
         }
     }
 }

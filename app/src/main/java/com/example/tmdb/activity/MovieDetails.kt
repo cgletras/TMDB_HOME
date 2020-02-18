@@ -1,5 +1,6 @@
 package com.example.tmdb.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.example.tmdb.R
 import com.example.tmdb.RoomTMDBApplication
 import com.example.tmdb.adapter.SearchMovieAdapter
 import com.example.tmdb.data.Movie
+import com.example.tmdb.data.Serie
 import kotlinx.android.synthetic.main.activity_movie_details.*
 import java.text.FieldPosition
 
@@ -23,6 +25,7 @@ class MovieDetails : AppCompatActivity() {
         val dados: Bundle? = intent.extras
 
         val movieDetails = dados?.getParcelable<Movie>("moviesDetails")
+        val serieDetails = dados?.getParcelable<Serie>("seriesDetails")
 
         var favorite = false
 
@@ -56,9 +59,16 @@ class MovieDetails : AppCompatActivity() {
                 favorite = true
 
                 val instantLong = System.currentTimeMillis() / 1000
-                movieDetails?.instant = instantLong.toString()
 
-                movieDetails?.let { it1 -> RoomTMDBApplication.movieDao.insert(it1) }
+                movieDetails?.let { it1 ->
+                    it1.instant = instantLong.toString()
+                    RoomTMDBApplication.movieDao.insert(it1) }
+
+                serieDetails?.let {it1 ->
+                    it1.instant = instantLong.toString()
+                    RoomTMDBApplication.serieDao.insert(it1)
+                }
+
                 Toast.makeText(
                     applicationContext,
                     "Filme adicionado aos favoritos",
@@ -76,9 +86,21 @@ class MovieDetails : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
         }
+        imvIconShare.setOnClickListener {
+            try{
+                val sharingIntent = Intent(Intent.ACTION_SEND)
+                sharingIntent.type = "text/plain"
+                val message = dados?.getString("title")
+           //     sharingIntent.setPackage("com.whatsapp")
 
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, message)
+                startActivity(sharingIntent)
 
+            }catch (e:Exception){
+                e.printStackTrace()
+                Toast.makeText(applicationContext, "FODEU...", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

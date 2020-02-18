@@ -36,7 +36,6 @@ class MenuSeriesAdapterRecyclerView: RecyclerView.Adapter<MenuSerieViewholder>()
         arrayOfSeries.addAll(serie)
         notifyDataSetChanged()
     }
-
 }
 
 class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -59,10 +58,12 @@ class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
 
             //Dados
             val dados = Bundle()
+            dados.putString("instant", serie.instant)
             dados.putString("title", serie.title)
             dados.putString("poster", serie.poster)
             dados.putString("details", serie.details)
             dados.putString("posterWide",serie.posterWide)
+            dados.putParcelable("seriesDetails", serie)
 
             intent.putExtras(dados)
 

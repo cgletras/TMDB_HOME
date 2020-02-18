@@ -42,12 +42,11 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
 
         view.setOnClickListener {
 
-            //Multi click handlers
+            //Multi click handler
             if (SystemClock.elapsedRealtime() - clickTime < 1000){
                 return@setOnClickListener
             }
             clickTime = SystemClock.elapsedRealtime()
-
             val intent = Intent(container.context, MovieDetails::class.java)
 
             //Animation
