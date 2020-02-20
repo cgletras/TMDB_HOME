@@ -102,12 +102,7 @@ class FavoriteFragment : Fragment() {
 
         }
 
-//        testeSerieBD.setOnClickListener {
-//            var series = RoomTMDBApplication.serieDao.getAllSeries() as ArrayList
-//            adapterSerie.setList(series)
-//            Toast.makeText(context, series[0].toString(), Toast.LENGTH_SHORT).show()
-//            Log.i("SERIES", series[0].toString())
-//        }
+//
         }
 
         private fun loadFavoriteDataBase() {

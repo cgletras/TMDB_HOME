@@ -59,11 +59,14 @@ class MenuFragment : Fragment() {
         rvMenuSeries.adapter = adapterSerie
         adapterMovieByGenre = SearchMovieAdapterRecyclerViewByGenre()
         rvMenuSeriesGrid.adapter = adapterMovieByGenre
+
         //Define Spinner
         genreList = hashMapOf<String, Int>()
         spinner = view.findViewById(R.id.spGeneros) as Spinner
+
         //LoadArrayFromAPI
         loadSpinnerContent(genreList, spinner)
+
         //SCROLL UP GENRE
         configSpinnerListener()
 
