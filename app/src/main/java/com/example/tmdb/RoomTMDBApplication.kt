@@ -2,9 +2,9 @@ package com.example.tmdb
 
 import android.app.Application
 import androidx.room.Room
-import com.example.tmdb.dao.MovieDao
-import com.example.tmdb.dao.SerieDao
-import com.example.tmdb.dataBase.MediaDataBase
+import com.example.tmdb.repository.local.dao.MovieDao
+import com.example.tmdb.repository.local.dao.SerieDao
+import com.example.tmdb.repository.local.MediaDataBase
 
 class RoomTMDBApplication : Application() {
 

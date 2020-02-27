@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
-import com.example.tmdb.activity.MovieDetails
-import com.example.tmdb.data.Serie
+import com.example.tmdb.ui.activity.MovieDetails
+import com.example.tmdb.repository.data.Serie
+import com.example.tmdb.ui.animation.LoadingIconAnimation
 
 class MenuSeriesAdapterRecyclerView: RecyclerView.Adapter<MenuSerieViewholder>(){
 
@@ -42,9 +44,14 @@ class MenuSerieViewholder(itemView: View): RecyclerView.ViewHolder(itemView){
 
     fun bind(serie: Serie) {
         val imageSerie = itemView.findViewById<ImageView>(R.id.imvSeriePosterPath)
+
+        val loadingProgressBar = itemView.findViewById<ProgressBar>(R.id.loadingAnimation)
+        loadingProgressBar.visibility = View.VISIBLE
+
         Glide.with(itemView.context)
             .load("http://image.tmdb.org/t/p/original/" + serie.poster)
-            .thumbnail()
+            .centerCrop()
+            .listener(LoadingIconAnimation(loadingProgressBar))
             .into(imageSerie)
 
         itemView.setOnClickListener {

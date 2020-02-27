@@ -8,13 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
-import com.example.tmdb.activity.MovieDetails
-import com.example.tmdb.data.Movie
+import com.example.tmdb.repository.data.Movie
+import com.example.tmdb.ui.activity.MovieDetails
+import com.example.tmdb.ui.animation.LoadingIconAnimation
 
 class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerAdapter() {
 
@@ -32,10 +34,13 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
         val tvImage = view.findViewById<ImageView>(R.id.sliderImage)
         val tvTile = view.findViewById<TextView>(R.id.tvMovieTitle)
 
-        //Glide
+        //Glide + Progress bar
+        val loadingProgressBar = view.findViewById<ProgressBar>(R.id.loadingAnimation)
+        loadingProgressBar.visibility = View.VISIBLE
+
         Glide.with(container)
             .load("http://image.tmdb.org/t/p/original/" + arrayOfMovies[position].posterBack)
-            .thumbnail()
+            .listener(LoadingIconAnimation(loadingProgressBar))
             .into(tvImage)
 
        tvTile.text = arrayOfMovies[position].title
@@ -77,3 +82,5 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: List<Movie>) : PagerA
         container.removeView(`object` as View)
     }
 }
+
+

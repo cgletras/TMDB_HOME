@@ -7,12 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
-import com.example.tmdb.activity.MovieDetails
-import com.example.tmdb.data.Movie
+import com.example.tmdb.ui.activity.MovieDetails
+import com.example.tmdb.repository.data.Movie
+import com.example.tmdb.ui.animation.LoadingIconAnimation
 
 class SearchMovieAdapterRecyclerViewByGenre: RecyclerView.Adapter<MovieByGenreViewholder>(){
 
@@ -43,9 +45,13 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
     fun bind (movie:Movie){
         val imageMovie = itemView.findViewById<ImageView>(R.id.imvSeriePosterPath)
+
+        //Glide + Progress bar
+        val loadingProgressBar = itemView.findViewById<ProgressBar>(R.id.loadingAnimation)
+        loadingProgressBar.visibility = View.VISIBLE
         Glide.with(itemView.context)
             .load("http://image.tmdb.org/t/p/original/" + movie.poster)
-            .thumbnail()
+            .listener(LoadingIconAnimation(loadingProgressBar))
             .into(imageMovie)
 
         itemView.setOnClickListener {

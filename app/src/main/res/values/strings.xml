@@ -9,7 +9,7 @@
     <string name="search_page_title">Procure filmes!</string>
     <string name="simbolo_de_lupa_para_busca">simbolo de lupa para busca</string>
     <string name="titulo_da_busca">Título da busca</string>
-    <string name="title_series_menu">Title Series Menu</string>
+    <string name="title_series_menu">"Séries no ar hoje!"</string>
     <string name="imagem_da_serie">Imagem da serie</string>
     <string name="titulo_serie">Titulo serie</string>
     <string name="digite_o_nome_do_filme">Digite o nome do filme!</string>

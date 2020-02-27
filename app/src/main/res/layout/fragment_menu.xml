@@ -5,7 +5,7 @@
     android:id="@+id/nestedScrollMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MenuFragment">
+    tools:context=".ui.fragment.MenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -95,27 +95,35 @@
             android:id="@+id/spGeneros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="17dp"
+            android:layout_marginEnd="8dp"
             android:fadingEdge="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvGeneroTitle"
-            app:layout_constraintTop_toBottomOf="@id/divider2"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
 
         <ImageView
             android:id="@+id/ivGenreImage"
             android:layout_width="0dp"
             android:layout_height="230dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/cinema"
-            android:layout_marginTop="16dp"
             android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/cinema"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGeneroTitle" />
 
-
-
+        <ProgressBar
+            android:id="@+id/loadingAnimationGenre"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/ivGenreImage"
+            app:layout_constraintEnd_toEndOf="@id/ivGenreImage"
+            app:layout_constraintStart_toStartOf="@id/ivGenreImage"
+            app:layout_constraintTop_toTopOf="@id/ivGenreImage" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMenuSeriesGrid"
