@@ -28,7 +28,7 @@ data class Movie (
     @SerializedName("overview")
     val details: String,
     @SerializedName("poster_path")
-    val poster: String,
+    val poster: String?,
     @SerializedName("instant")
     var instant:String
 

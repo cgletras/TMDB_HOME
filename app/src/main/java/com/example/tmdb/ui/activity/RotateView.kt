@@ -18,7 +18,7 @@ object RotateView {
         valueAnimator.interpolator = AccelerateDecelerateInterpolator()
 
         // animate over the course of 700 milliseconds
-        valueAnimator.duration = 3000
+        valueAnimator.duration = 1500
 
         // define how to update the view at each "step" of the animation
         valueAnimator.addUpdateListener { animation ->
@@ -40,7 +40,7 @@ object RotateView {
         valueAnimator.interpolator = AccelerateDecelerateInterpolator()
 
         // animate over the course of 700 milliseconds
-        valueAnimator.duration = 2400
+        valueAnimator.duration = 1500
 
         // define how to update the view at each "step" of the animation
         valueAnimator.addUpdateListener { animation ->
