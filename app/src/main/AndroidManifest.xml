@@ -16,14 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".ui.activity.SplashActivity">
+        <activity android:name=".presentation.ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MovieDetails" />
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".presentation.ui.activity.MovieDetails" />
+        <activity android:name=".presentation.ui.activity.MainActivity"/>
     </application>
 </manifest>

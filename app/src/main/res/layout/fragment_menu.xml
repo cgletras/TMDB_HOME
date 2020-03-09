@@ -5,7 +5,7 @@
     android:id="@+id/nestedScrollMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.MenuFragment">
+    tools:context=".presentation.ui.fragment.MenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

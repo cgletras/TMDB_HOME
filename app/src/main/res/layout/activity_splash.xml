@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:opacity="opaque"
     android:orientation="vertical"
-    tools:context=".ui.activity.SplashActivity">
+    tools:context=".presentation.ui.activity.SplashActivity">
 
     <TextView
         android:id="@+id/tvAppTitle"
