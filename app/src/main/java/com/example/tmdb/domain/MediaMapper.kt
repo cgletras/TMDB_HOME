@@ -1,5 +1,6 @@
 package com.example.tmdb.domain
 
+import com.example.tmdb.data.repository.local.entity.FavoriteMedia
 import com.example.tmdb.data.repository.remote.entity.Movie
 import com.example.tmdb.data.repository.remote.entity.Serie
 
@@ -58,6 +59,14 @@ class MediaMapper {
             )
             return serie
         }
+
+        fun mediaToFavorite(media: Media): FavoriteMedia{
+            val favoriteMedia = FavoriteMedia(
+
+            )
+            return favoriteMedia
+        }
+
     }
 
 

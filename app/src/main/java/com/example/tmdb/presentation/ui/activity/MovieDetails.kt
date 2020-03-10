@@ -53,9 +53,9 @@ class MovieDetails : AppCompatActivity() {
             .into(imageSerieBack)
 
         //checkIfFavorite
-        var FavoriteMovies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+        var FavoriteMedia = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
 
-        for (favoriteMovie in FavoriteMovies)
+        for (favoriteMovie in FavoriteMedia)
             if (favoriteMovie.id == movieDetails?.id) {
                 iconView.setImageResource(R.drawable.ic_favorite_green_24dp)
                 favorite = true

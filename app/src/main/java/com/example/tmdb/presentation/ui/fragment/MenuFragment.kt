@@ -56,11 +56,9 @@ class MenuFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Define adapters
-        adapterSerie =
-            MenuSeriesAdapterRecyclerView()
+        adapterSerie = MenuSeriesAdapterRecyclerView()
         rvMenuSeries.adapter = adapterSerie
-        adapterMovieByGenre =
-            SearchMovieAdapterRecyclerViewByGenre()
+        adapterMovieByGenre = SearchMovieAdapterRecyclerViewByGenre()
         rvMenuSeriesGrid.adapter = adapterMovieByGenre
 
         //Define Spinner
@@ -219,8 +217,6 @@ class MenuFragment : Fragment() {
                             val media = MediaMapper.movieToMedia(it)
                             mediaList.add(media)
                         }
-
-
                         adapter =
                             MenuMovieAdapterViewPager(
                                 mediaList
