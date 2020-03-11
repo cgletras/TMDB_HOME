@@ -24,8 +24,8 @@ class MovieDetails : AppCompatActivity() {
 
         val dados: Bundle? = intent.extras
 
-        val movieDetails = dados?.getParcelable<Media>("moviesDetails")
-        val serieDetails = dados?.getParcelable<Serie>("seriesDetails")
+        val mediaDetails = dados?.getParcelable<Media>("mediaDetails")
+//        val serieDetails = dados?.getParcelable<Serie>("seriesDetails")
 
         var favorite = false
 
@@ -55,8 +55,8 @@ class MovieDetails : AppCompatActivity() {
         //checkIfFavorite
         var FavoriteMedia = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
 
-        for (favoriteMovie in FavoriteMedia)
-            if (favoriteMovie.id == movieDetails?.id) {
+        for (favoriteMedia in FavoriteMedia)
+            if (favoriteMedia.id == mediaDetails?.id) {
                 iconView.setImageResource(R.drawable.ic_favorite_green_24dp)
                 favorite = true
             }
@@ -69,20 +69,15 @@ class MovieDetails : AppCompatActivity() {
 
                 val instantLong = System.currentTimeMillis() / 1000
 
-                movieDetails?.let { media ->
-                    val movie = MediaMapper.mediaToMovie(media)
-                    movie.instant = instantLong.toString()
-                    RoomTMDBApplication.movieDao.insert(movie)
-                }
-
-                serieDetails?.let { it1 ->
-                    it1.instant = instantLong.toString()
-                    RoomTMDBApplication.serieDao.insert(it1)
+                mediaDetails?.let { media ->
+                    val favoriteMedia = MediaMapper.mediaToFavorite(media)
+                    favoriteMedia.instant = instantLong.toString()
+                    RoomTMDBApplication.favoriteMediaDao.insert(favoriteMedia)
                 }
 
                 Toast.makeText(
                     applicationContext,
-                    "Filme adicionado aos favoritos",
+                    "Adicionado aos favoritos",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -90,9 +85,9 @@ class MovieDetails : AppCompatActivity() {
                 iconView.setImageResource(R.drawable.ic_favorite_border_green_24dp)
                 favorite = false
 
-                movieDetails?.let { media ->
-                    val movie = MediaMapper.mediaToMovie(media)
-                    RoomTMDBApplication.movieDao.deleteMovie(movie)
+                mediaDetails?.let { media ->
+                    val favoriteMedia = MediaMapper.mediaToFavorite(media)
+                    RoomTMDBApplication.favoriteMediaDao.deleteFavorite(favoriteMedia)
                 }
                 Toast.makeText(
                     applicationContext,

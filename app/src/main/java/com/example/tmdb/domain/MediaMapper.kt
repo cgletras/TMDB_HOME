@@ -6,7 +6,7 @@ import com.example.tmdb.data.repository.remote.entity.Serie
 
 class MediaMapper {
 
-    companion object{
+    companion object {
         fun movieToMedia(movie: Movie): Media {
             val media = Media(
                 movie.id,
@@ -33,6 +33,7 @@ class MediaMapper {
             )
             return movie
         }
+
         fun serieToMedia(serie: Serie): Media {
             val media = Media(
                 serie.id,
@@ -60,14 +61,31 @@ class MediaMapper {
             return serie
         }
 
-        fun mediaToFavorite(media: Media): FavoriteMedia{
+        fun mediaToFavorite(media: Media): FavoriteMedia {
             val favoriteMedia = FavoriteMedia(
-
+                media.id,
+                media.title,
+                media.poster,
+                media.details,
+                media.posterWide,
+                media.releaseDate,
+                media.instant
             )
             return favoriteMedia
         }
 
+        fun favoriteToMedia(favoriteMedia: FavoriteMedia): Media {
+            val media = Media(
+                favoriteMedia.id,
+                favoriteMedia.title,
+                favoriteMedia.poster,
+                favoriteMedia.posterWide,
+                favoriteMedia.details,
+                favoriteMedia.releaseDate,
+                favoriteMedia.instant,
+                MediaType.MOVIE
+            )
+            return media
+        }
     }
-
-
 }

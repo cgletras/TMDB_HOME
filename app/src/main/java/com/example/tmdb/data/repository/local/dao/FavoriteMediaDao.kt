@@ -8,12 +8,12 @@ interface FavoriteMediaDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(favoriteMedia: FavoriteMedia)
 
-    @Query("DELETE FROM serie_table")
+    @Query("DELETE FROM favorites_table")
     fun deleteAll()
 
-    @Query("SELECT * FROM serie_table ORDER BY instant DESC")
+    @Query("SELECT * FROM favorites_table ORDER BY instant DESC")
     fun getAllFavorites():List<FavoriteMedia>
 
     @Delete
-    fun deleteSerie(favoriteMedia: FavoriteMedia)
+    fun deleteFavorite(favoriteMedia: FavoriteMedia)
 }

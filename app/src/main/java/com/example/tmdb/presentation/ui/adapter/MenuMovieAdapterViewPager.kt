@@ -72,7 +72,7 @@ class MenuMovieAdapterViewPager(private val arrayOfMovies: ArrayList<Media>) : P
             dados.putString("details", arrayOfMovies[position].details)
             dados.putString("posterWide",arrayOfMovies[position].posterWide)
             dados.putString("id", arrayOfMovies[position].id.toString())
-            dados.putParcelable("moviesDetails", arrayOfMovies[position])
+            dados.putParcelable("mediaDetails", arrayOfMovies[position])
 
             intent.putExtras(dados)
 

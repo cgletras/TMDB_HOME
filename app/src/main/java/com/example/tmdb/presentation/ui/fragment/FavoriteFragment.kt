@@ -63,9 +63,9 @@ class FavoriteFragment : Fragment() {
 
                 //Remove from Room dataBase
                 Log.i("POSITION ITEM LAYOUT", viewHolder.layoutPosition.toString())
-                val moviesDel = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+                val moviesDel = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
                 Log.i("POSITION ITEM LIST", moviesDel[viewHolder.layoutPosition].toString())
-                RoomTMDBApplication.movieDao.deleteMovie(moviesDel[viewHolder.layoutPosition])
+                RoomTMDBApplication.favoriteMediaDao.deleteFavorite(moviesDel[viewHolder.layoutPosition])
             }
         }
         //Item B
@@ -85,10 +85,10 @@ class FavoriteFragment : Fragment() {
                     .show()
 
                 RoomTMDBApplication.movieDao.deleteAll()
-                val movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+                val movies = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
                 val medias = ArrayList<Media>()
                 movies.forEach {movie ->
-                    medias.add(MediaMapper.movieToMedia(movie)) }
+                    medias.add(MediaMapper.favoriteToMedia(movie)) }
 
                 adapter.setList(medias)
                 //TODO Modificar a class do banco para MEDIA DATABASE
@@ -113,10 +113,10 @@ class FavoriteFragment : Fragment() {
 
     private fun loadFavoriteDataBase() {
 
-        var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+        var movies = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
         val medias = ArrayList<Media>()
         movies.forEach {movie ->
-            medias.add(MediaMapper.movieToMedia(movie)) }
+            medias.add(MediaMapper.favoriteToMedia(movie)) }
 
         adapter.setList(medias)
         //TODO Modificar a class do banco para MEDIA DATABASE
@@ -124,11 +124,11 @@ class FavoriteFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        var movies = RoomTMDBApplication.movieDao.getAllMovies() as ArrayList
+        var movies = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
 
         val medias = ArrayList<Media>()
         movies.forEach {movie ->
-            medias.add(MediaMapper.movieToMedia(movie)) }
+            medias.add(MediaMapper.favoriteToMedia(movie)) }
 
         adapter.setList(medias)
         //TODO Modificar a class do banco para MEDIA DATABASE

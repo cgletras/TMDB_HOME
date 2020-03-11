@@ -43,9 +43,9 @@ class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
         holder.bind(arrayOfMovies[position])
     }
 
-    fun setList(movies: ArrayList<Media>) {
+    fun setList(medias: ArrayList<Media>) {
         arrayOfMovies.clear()
-        arrayOfMovies.addAll(movies)
+        arrayOfMovies.addAll(medias)
         notifyDataSetChanged()
     }
 
@@ -109,7 +109,7 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             dados.putString("poster", media.poster)
             dados.putString("details", media.details)
             dados.putString("posterWide",media.posterWide)
-            dados.putParcelable("moviesDetails", media)
+            dados.putParcelable("mediaDetails", media)
 
             intent.putExtras(dados)
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())
