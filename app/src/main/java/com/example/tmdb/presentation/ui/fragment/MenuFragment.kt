@@ -191,8 +191,14 @@ class MenuFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<SerieList>, response: Response<SerieList>) {
+
+                    val mediaList = ArrayList<Media>()
                     response.body()?.let { result ->
-                        adapterSerie.setList(result.series)
+                        result.series.forEach {
+                            val media = MediaMapper.serieToMedia(it)
+                            mediaList.add(media)
+                        }
+                        adapterSerie.setList(mediaList)
                     }
                 }
             })

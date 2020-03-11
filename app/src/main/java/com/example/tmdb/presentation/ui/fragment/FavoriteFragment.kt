@@ -84,7 +84,7 @@ class FavoriteFragment : Fragment() {
                 Toast.makeText(view.context, "Ok...lista apagada...perdeu heim", Toast.LENGTH_SHORT)
                     .show()
 
-                RoomTMDBApplication.movieDao.deleteAll()
+                RoomTMDBApplication.favoriteMediaDao.deleteAll()
                 val movies = RoomTMDBApplication.favoriteMediaDao.getAllFavorites() as ArrayList
                 val medias = ArrayList<Media>()
                 movies.forEach {movie ->

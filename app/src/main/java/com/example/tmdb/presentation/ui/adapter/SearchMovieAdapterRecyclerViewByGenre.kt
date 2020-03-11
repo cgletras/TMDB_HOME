@@ -78,7 +78,7 @@ class MovieByGenreViewholder(itemView: View):RecyclerView.ViewHolder(itemView) {
             dados.putString("poster", movie.poster)
             dados.putString("details", movie.details)
             dados.putString("posterWide",movie.posterWide)
-            dados.putParcelable("moviesDetails", movie)
+            dados.putParcelable("mediaDetails", movie)
 
             intent.putExtras(dados)
             itemView.context.startActivity(intent, activityOptionsCompat.toBundle())

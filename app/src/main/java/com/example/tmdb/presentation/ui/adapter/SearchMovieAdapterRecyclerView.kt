@@ -22,7 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
 
-    private val arrayOfMovies = ArrayList<Media>()
+    private val arrayOfMedias = ArrayList<Media>()
 
     private var removedPosition:Int = 0
     private lateinit var removedItem: Media
@@ -37,30 +37,30 @@ class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = arrayOfMovies.size
+    override fun getItemCount() = arrayOfMedias.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(arrayOfMovies[position])
+        holder.bind(arrayOfMedias[position])
     }
 
     fun setList(medias: ArrayList<Media>) {
-        arrayOfMovies.clear()
-        arrayOfMovies.addAll(medias)
+        arrayOfMedias.clear()
+        arrayOfMedias.addAll(medias)
         notifyDataSetChanged()
     }
 
     fun removeItem(holder: RecyclerView.ViewHolder) {
         removedPosition = holder.adapterPosition
-        removedItem = arrayOfMovies[holder.adapterPosition]
+        removedItem = arrayOfMedias[holder.adapterPosition]
 
-        arrayOfMovies.removeAt(holder.adapterPosition)
+        arrayOfMedias.removeAt(holder.adapterPosition)
         notifyItemRemoved(holder.adapterPosition)
 
         Snackbar.make(holder.itemView, "Deletado", Snackbar.LENGTH_LONG)
             .setAction("DESFAZER"){
-                arrayOfMovies.add(removedPosition, removedItem)
+                arrayOfMedias.add(removedPosition, removedItem)
                 notifyItemInserted(removedPosition)
-                RoomTMDBApplication.movieDao.insert(MediaMapper.mediaToMovie(removedItem))
+                RoomTMDBApplication.favoriteMediaDao.insert(MediaMapper.mediaToFavorite(removedItem))
             }.show()
 
     }
