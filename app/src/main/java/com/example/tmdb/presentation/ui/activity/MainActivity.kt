@@ -2,8 +2,10 @@ package com.example.tmdb.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.tmdb.R
+import com.example.tmdb.databinding.ActivityMainBinding
 import com.example.tmdb.presentation.ui.fragment.FavoriteFragment
 import com.example.tmdb.presentation.ui.fragment.MenuFragment
 import com.example.tmdb.presentation.ui.fragment.SearchFragment
@@ -11,6 +13,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     private val navigationListener =
         BottomNavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         bnvMain.setOnNavigationItemSelectedListener(navigationListener)
 
         goToFragment(MenuFragment.newInstance())

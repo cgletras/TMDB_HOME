@@ -85,9 +85,9 @@ class SplashActivity : AppCompatActivity() {
             start()
         }
 
-        ivImageAnimated.setOnClickListener {
-            recreate()
-        }
+//        ivImageAnimated.setOnClickListener {
+//            recreate()
+//        }
     }
 }
 

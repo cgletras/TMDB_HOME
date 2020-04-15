@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 @Entity(tableName = "favorites_table")
-data class FavoriteMedia (
+data class FavoriteMedia(
     @PrimaryKey
     @SerializedName("id")
     val id: Int,
@@ -25,4 +25,7 @@ data class FavoriteMedia (
     @SerializedName("instant")
     var instant: String?
 
-): Parcelable
+) : Parcelable
+
+
+

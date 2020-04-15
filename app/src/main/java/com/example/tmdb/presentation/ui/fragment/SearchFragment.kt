@@ -8,19 +8,23 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.tmdb.R
-import com.example.tmdb.presentation.ui.adapter.SearchMovieAdapter
-import com.example.tmdb.data.repository.remote.entity.MovieList
 import com.example.tmdb.data.repository.remote.RetrofitInitializer
+import com.example.tmdb.data.repository.remote.entity.MovieList
+import com.example.tmdb.databinding.FragmentSearchBinding
 import com.example.tmdb.domain.Media
 import com.example.tmdb.domain.MediaMapper
+import com.example.tmdb.presentation.ui.adapter.SearchMovieAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SearchFragment : Fragment() {
+
+    private lateinit var binding: FragmentSearchBinding
 
     private val adapter =
         SearchMovieAdapter()
@@ -30,12 +34,16 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+
+        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_search, container, false )
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.inputTextSearch = "Text"
         //Search IME_ACTION_SEARCH implementation
         etSearchTitle.setOnEditorActionListener { v, actionId, event ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH){
