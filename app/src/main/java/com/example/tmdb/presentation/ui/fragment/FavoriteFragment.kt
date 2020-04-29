@@ -73,6 +73,7 @@ class FavoriteFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(rvFavoriteRecycler)
 
         //------------------------
+        //Remover toda a lista de favoritos
 
         btRemoveTudo.setOnClickListener {
 

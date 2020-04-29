@@ -62,7 +62,6 @@ class SearchMovieAdapter : RecyclerView.Adapter<ViewHolder>() {
                 notifyItemInserted(removedPosition)
                 RoomTMDBApplication.favoriteMediaDao.insert(MediaMapper.mediaToFavorite(removedItem))
             }.show()
-
     }
 }
 
